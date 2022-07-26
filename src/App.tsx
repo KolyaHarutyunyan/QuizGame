@@ -27,14 +27,14 @@ const App = () => {
       </button>
       <p className="score">Score:</p>
       <p>Loading Questions ...</p>
-      <QuizGame
+      {/* <QuizGame
         questionNumber={number + 1}
         totalQuestions={TOTAL_QUESTIONS}
         question={questions[number].question}
         answers={questions[number].answers}
         userAnswerExists={!!userAnswers.length}
         callback={checkAnswer}
-      />
+      /> */}
       <button
         type="button"
         className="next-button"
