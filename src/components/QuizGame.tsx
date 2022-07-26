@@ -29,6 +29,7 @@ const QuizGame: React.FC<QuizGameProps> = ({
                         <button
                             type="button"
                             className="check-button"
+                            value={answer}
                             onClick={callback}
                             disabled={userAnswerExists}
                         >

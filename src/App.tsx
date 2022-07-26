@@ -18,30 +18,39 @@ const App = () => {
   return (
     <div className="App">
       <h1>Quiz Game</h1>
-      <button
-        type="button"
-        className="start-button"
-        onClick={startTrivia}
-      >
-        Start
-      </button>
-      <p className="score">Score:</p>
-      <p>Loading Questions ...</p>
-      {/* <QuizGame
-        questionNumber={number + 1}
-        totalQuestions={TOTAL_QUESTIONS}
-        question={questions[number].question}
-        answers={questions[number].answers}
-        userAnswerExists={!!userAnswers.length}
-        callback={checkAnswer}
-      /> */}
-      <button
-        type="button"
-        className="next-button"
-        onClick={handleNextQuestion}
-      >
-        Next Question
-      </button>
+      {(gameIsOver || userAnswers.length === TOTAL_QUESTIONS) && (
+        <button
+          type="button"
+          className="start-button"
+          onClick={startTrivia}
+        >
+          Start
+        </button>
+      )}
+      {!gameIsOver && <p className="score">Score: <em>{score}</em></p>}
+      {loading && <p>Loading Questions ...</p>}
+      {!loading && !gameIsOver && (
+        <QuizGame
+          questionNumber={number + 1}
+          totalQuestions={TOTAL_QUESTIONS}
+          question={questions[number].question}
+          answers={questions[number].answers}
+          userAnswerExists={!!userAnswers.length}
+          callback={checkAnswer}
+        />
+      )}
+      {!loading &&
+        !gameIsOver &&
+        userAnswers.length === number + 1 &&
+        number !== TOTAL_QUESTIONS - 1 && (
+        <button
+          type="button"
+          className="next-button"
+          onClick={handleNextQuestion}
+        >
+          Next Question
+        </button>
+      )}
     </div>
   );
 }
