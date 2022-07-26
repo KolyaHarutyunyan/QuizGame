@@ -1,10 +1,11 @@
 import React from "react";
+import QuizGameAnswer from "../types/QuizGameAnswer";
 
 interface QuizGameProps {
     question: string;
     answers: string[];
-    callback: any;
-    userAnswerExists: boolean;
+    callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    userAnswer: QuizGameAnswer | undefined;
     questionNumber: number;
     totalQuestions: number;
 }
@@ -13,7 +14,7 @@ const QuizGame: React.FC<QuizGameProps> = ({
     question,
     answers,
     callback,
-    userAnswerExists,
+    userAnswer,
     questionNumber,
     totalQuestions
 }) => {
@@ -31,7 +32,7 @@ const QuizGame: React.FC<QuizGameProps> = ({
                             className="check-button"
                             value={answer}
                             onClick={callback}
-                            disabled={userAnswerExists}
+                            disabled={!!userAnswer}
                         >
                             <span dangerouslySetInnerHTML={{ __html: answer }} />
                         </button>

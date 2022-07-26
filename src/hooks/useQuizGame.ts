@@ -13,7 +13,7 @@ const useQuizGame = () => {
     const [score, setScore] = useState(0);
     const [gameIsOver, setGameIsOver] = useState(true);
 
-    const startTrivia = async () => {
+    const startTrivia = async (): Promise<void> => {
         setLoading(true);
         setGameIsOver(false);
         const quizGameQuestions = await fetchQuizGameQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
@@ -24,14 +24,14 @@ const useQuizGame = () => {
         setLoading(false);
     };
 
-    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>): void => {
         if (!gameIsOver) {
             const answer = e.currentTarget.value;
-            const answerIsCorrect = answer === questions[number].correct_answer;
+            const answerIsCorrect = questions[number].correct_answer === answer;
             if (answerIsCorrect) {
                 setScore(prevState => prevState + 1);
             }
-            const answerObject: QuizGameAnswer = {
+            const answerObject = {
                 question: questions[number].question,
                 answer,
                 isCorrect: answerIsCorrect,
@@ -41,8 +41,13 @@ const useQuizGame = () => {
         }
     };
 
-    const handleNextQuestion = () => {
-
+    const handleNextQuestion = (): void => {
+        const nextQuestion = number + 1;
+        if (nextQuestion === TOTAL_QUESTIONS) {
+            setGameIsOver(true);
+        } else {
+            setNumber(nextQuestion);
+        }
     };
 
     return {

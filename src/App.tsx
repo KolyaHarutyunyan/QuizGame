@@ -35,7 +35,7 @@ const App = () => {
           totalQuestions={TOTAL_QUESTIONS}
           question={questions[number].question}
           answers={questions[number].answers}
-          userAnswerExists={!!userAnswers.length}
+          userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer}
         />
       )}
