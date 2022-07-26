@@ -1,8 +1,19 @@
 import QuizGame from "./components/QuizGame";
+import { TOTAL_QUESTIONS } from "./constants";
 import useQuizGame from "./hooks/useQuizGame";
 
 const App = () => {
-  const { startTrivia, checkAnswer, handleNextQuestion } = useQuizGame();
+  const {
+    loading,
+    questions,
+    number,
+    userAnswers,
+    score,
+    gameIsOver,
+    startTrivia,
+    checkAnswer,
+    handleNextQuestion
+  } = useQuizGame();
 
   return (
     <div className="App">
@@ -16,7 +27,14 @@ const App = () => {
       </button>
       <p className="score">Score:</p>
       <p>Loading Questions ...</p>
-      <QuizGame />
+      <QuizGame
+        questionNumber={number + 1}
+        totalQuestions={TOTAL_QUESTIONS}
+        question={questions[number].question}
+        answers={questions[number].answers}
+        userAnswerExists={!!userAnswers.length}
+        callback={checkAnswer}
+      />
       <button
         type="button"
         className="next-button"
