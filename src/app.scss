@@ -37,6 +37,9 @@
             font-size: 70px;
             font-weight: 400;
             margin: 20px;
+            @media (max-width: 768px) {
+                font-size: 44px;
+            }
         }
         .start-button {
             @include button-style();
