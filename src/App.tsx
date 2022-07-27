@@ -49,7 +49,7 @@ const App = () => {
             className="next-button"
             onClick={handleNextQuestion}
           >
-            Next Question
+            Next 
           </button>
         )}
       </div>

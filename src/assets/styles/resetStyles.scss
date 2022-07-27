@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Work+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: "Catamaran", sans-serif;
 }
 
 html,
@@ -62,6 +60,7 @@ video {
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'Work Sans', sans-serif;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
