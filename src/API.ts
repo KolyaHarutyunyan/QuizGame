@@ -10,6 +10,6 @@ export const fetchQuizGameQuestions = async (
     const parsedData = await (await fetch(endpoint)).json();
     return parsedData.results.map((quizQuestion: QuizGameQuestion) => ({
         ...quizQuestion,
-        answers: shuffleArray([...quizQuestion.incorrect_answers, quizQuestion.correct_answer])
+        answers: shuffleArray<string>([...quizQuestion.incorrect_answers, quizQuestion.correct_answer])
     }));
 };
