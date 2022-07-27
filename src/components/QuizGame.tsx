@@ -25,11 +25,14 @@ const QuizGame: React.FC<QuizGameProps> = ({
             </p>
             <p dangerouslySetInnerHTML={{ __html: question }} />
             <div className="answers-container">
-                {answers.map((answer, index) => (
-                    <div key={index} className="answer-card">
+                {answers.map((answer, index) => {
+                    const isCorrect = userAnswer?.correctAnswer === answer;
+                    const isClicked = userAnswer?.answer === answer;
+
+                    return <div key={index} className="answer-card">
                         <button
                             type="button"
-                            className="check-button"
+                            className={`check-button ${isCorrect ? "correct": isClicked ? "clicked" : ""}`}
                             value={answer}
                             onClick={callback}
                             disabled={!!userAnswer}
@@ -37,7 +40,7 @@ const QuizGame: React.FC<QuizGameProps> = ({
                             <span dangerouslySetInnerHTML={{ __html: answer }} />
                         </button>
                     </div>
-                ))}
+                })}
             </div>
         </div>
     );

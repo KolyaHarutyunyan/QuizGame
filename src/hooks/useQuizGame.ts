@@ -5,11 +5,23 @@ import Difficulty from "../enums/Difficulty.";
 import QuizGameAnswer from "../types/QuizGameAnswer";
 import QuizGameQuestion from "../types/QuizGameQuestion";
 
-const useQuizGame = () => {
+interface UseQuizGame {
+    loading: boolean;
+    questions: QuizGameQuestion[];
+    number: number;
+    userAnswers: QuizGameAnswer[];
+    score: number;
+    gameIsOver: boolean;
+    startTrivia: () => Promise<void>;
+    checkAnswer: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    handleNextQuestion: () => void;
+}
+
+const useQuizGame = (): UseQuizGame => {
     const [loading, setLoading] = useState(false);
-    const [questions, setQuestions] = useState<Array<QuizGameQuestion>>([]);
+    const [questions, setQuestions] = useState<QuizGameQuestion[]>([]);
     const [number, setNumber] = useState(0);
-    const [userAnswers, setUserAnswers] = useState<Array<QuizGameAnswer>>([]);
+    const [userAnswers, setUserAnswers] = useState<QuizGameAnswer[]>([]);
     const [score, setScore] = useState(0);
     const [gameIsOver, setGameIsOver] = useState(true);
 
