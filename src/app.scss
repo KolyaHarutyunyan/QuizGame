@@ -10,8 +10,9 @@
     font-style: italic;
     color: #ffffff;
     letter-spacing: 4px;
+    transition: transform .2s linear;
     &:hover {
-        transform: scale(1.05);
+        transform: scale(.9);
     }
 }
 
@@ -23,6 +24,9 @@
     background-color: #dfe6f6;
     display: flex;
     justify-content: center;
+    @media (max-width: 500px) {
+        padding: 20px;
+    }
     .game-wrapper {
         width: 100%;
         text-align: center;
@@ -30,6 +34,9 @@
             font-size: 48px;
             font-weight: 700;
             color: #6d81ec;
+            @media (max-width: 500px) {
+                font-size: 40px;
+            }
         }
         .start-button {
             @include button-style();
